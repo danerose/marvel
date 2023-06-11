@@ -10,8 +10,8 @@ import 'package:marvel/app/repositories/implementation/marvel_repository_impl.da
 
 final injector = GetIt.instance;
 
-Future<void> init(Environments env) async {
-  injector.registerSingleton<Environments>(env);
+Future<void> init(Environment env) async {
+  injector.registerSingleton<Environment>(env);
   injector.registerSingleton<SizeConfig>(SizeConfig());
   injector.registerSingleton<ColorsConstants>(ColorsConstants(env: env.env));
   injector.registerSingleton<HttpService>(
@@ -20,6 +20,7 @@ Future<void> init(Environments env) async {
 
   injector.registerLazySingleton<MarvelRepository>(
     () => MarvelRepositoryImpl(
+      env: injector.get<Environment>(),
       httpService: injector.get<HttpService>(),
     ),
   );

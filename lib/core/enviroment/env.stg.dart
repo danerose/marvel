@@ -1,9 +1,9 @@
 import 'package:marvel/core/enviroment/env.dart';
 import 'package:marvel/core/enum/enviroments.enum.dart';
 
-class StagingEnv implements Environments {
+class StagingEnv implements Environment {
   @override
-  String get apiURL => 'https://gateway.marvel.com/v1/public/characters';
+  String get apiURL => 'https://gateway.marvel.com/v1/public';
 
   @override
   String get apiPubKey => 'fea4ddbf370376865724c2b03db5ffef';
