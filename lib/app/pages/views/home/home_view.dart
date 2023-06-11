@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marvel/app/injector.dart';
-import 'package:marvel/app/repositories/interfaces/marvel_repository.dart';
-import 'package:marvel/app/view_model/characters/character_event.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marvel/app/pages/components/organism/list/avatar_character_loading_list.organism.dart';
+import 'package:marvel/core/constant/colors.constants.dart';
 import 'package:marvel/core/extension/localization.extension.dart';
 
 import 'package:marvel/app/view_model/characters/character_state.dart';
 import 'package:marvel/app/view_model/characters/character_bloc.dart';
+import 'package:marvel/app/view_model/characters/character_event.dart';
+
+import 'package:marvel/app/repositories/interfaces/marvel_repository.dart';
+
+import 'package:marvel/app/pages/components/organism/list/avatar_character_list.organism.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -14,16 +19,29 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.appTitle)),
-      body: BlocProvider(
+      appBar: AppBar(
+        elevation: 0,
+        foregroundColor: ColorsConstants.white,
+        backgroundColor: ColorsConstants.transparent,
+        title: Text(context.l10n.appTitle),
+      ),
+      extendBodyBehindAppBar: true,
+      body: BlocProvider<CharacterBloc>(
         create: (_) => CharacterBloc(
           injector.get<MarvelRepository>(),
         )..add(CharacterLoadList()),
         child: BlocBuilder<CharacterBloc, CharacterState>(
           builder: (BuildContext context, CharacterState state) {
-            return const Center(
-              child: Text('Home'),
-            );
+            switch (state) {
+              case CharacterLoadingList():
+                return const AvatarCharacterLoadingListOrganism();
+              case CharacterLoadedList():
+                return AvatarCharacterListOrganism(
+                  characters: state.characters,
+                );
+              default:
+                return const Text('Error');
+            }
           },
         ),
       ),

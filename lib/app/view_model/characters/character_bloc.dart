@@ -21,7 +21,9 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
     final res = await _marvelRepository.getCharacters();
     res.fold(
       (CustomException l) => emit(CharacterError()),
-      (CharacterResponse r) => CharacterLoadedList(characters: r.characters),
+      (CharacterResponse r) => emit(CharacterLoadedList(
+        characters: r.characters,
+      )),
     );
   }
 }
