@@ -15,6 +15,12 @@ class Event extends Equatable {
     required this.returned,
   });
 
+  const Event.empty()
+      : available = 0,
+        collectionURI = '',
+        items = const [],
+        returned = 0;
+
   factory Event.fromJson(Map<String, dynamic>? json) {
     return Event(
       available: ValidatorUtils.containsKey<int>(json, 'available', 0),

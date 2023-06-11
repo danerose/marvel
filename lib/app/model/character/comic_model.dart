@@ -15,6 +15,12 @@ class Comic extends Equatable {
     required this.returned,
   });
 
+  const Comic.empty()
+      : available = 0,
+        collectionURI = '',
+        items = const [],
+        returned = 0;
+
   factory Comic.fromJson(Map<String, dynamic>? json) {
     return Comic(
       available: ValidatorUtils.containsKey<int>(json, 'available', 0),

@@ -12,6 +12,11 @@ class Item extends Equatable {
     required this.type,
   });
 
+  const Item.empty()
+      : resourceURI = '',
+        name = '',
+        type = '';
+
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
       resourceURI: ValidatorUtils.containsKey(json, 'resourceURI', ''),

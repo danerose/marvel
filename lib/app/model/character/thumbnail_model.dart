@@ -10,6 +10,10 @@ class Thumbnail extends Equatable {
     required this.exten,
   });
 
+  const Thumbnail.empty()
+      : path = '',
+        exten = '';
+
   factory Thumbnail.fromJson(Map<String, dynamic>? json) {
     return Thumbnail(
       path: ValidatorUtils.containsKey(json, 'path', ''),

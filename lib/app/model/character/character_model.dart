@@ -29,6 +29,17 @@ class Character extends Equatable {
     required this.event,
   });
 
+  const Character.empty()
+      : id = 0,
+        name = '',
+        description = '',
+        modified = '',
+        resourceURI = '',
+        thumbnail = const Thumbnail.empty(),
+        comic = const Comic.empty(),
+        storie = const Storie.empty(),
+        event = const Event.empty();
+
   factory Character.fromJson(Map<String, dynamic>? json) {
     return Character(
       id: ValidatorUtils.containsKey<int>(json, 'id', 0),

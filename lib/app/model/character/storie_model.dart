@@ -15,6 +15,12 @@ class Storie extends Equatable {
     required this.returned,
   });
 
+  const Storie.empty()
+      : available = 0,
+        collectionURI = '',
+        items = const [],
+        returned = 0;
+
   factory Storie.fromJson(Map<String, dynamic>? json) {
     return Storie(
       available: ValidatorUtils.containsKey<int>(json, 'available', 0),

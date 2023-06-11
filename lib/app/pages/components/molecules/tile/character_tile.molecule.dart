@@ -1,33 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:marvel/core/constant/colors.constants.dart';
 import 'package:marvel/app/model/character/character_model.dart';
+
 import 'package:marvel/app/pages/components/atoms/images/image.atom.dart';
+import 'package:marvel/app/pages/components/atoms/icons/arrow_right_icon.atom.dart';
 
 class CharacterTiledMolecule extends StatelessWidget {
   const CharacterTiledMolecule({
     super.key,
     required this.character,
+    required this.onPressed,
   });
 
   final Character character;
+  final Function(Character character) onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Container(
-        padding: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: ColorsConstants.alt, width: 0.5),
-        ),
-        height: 50,
-        width: 50,
-        child: ImageAtom(
-          url: character.thumbnail.toValidImg(),
+      leading: Hero(
+        tag: character.name,
+        child: Container(
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: ColorsConstants.alt, width: 0.5),
+          ),
           height: 50,
           width: 50,
-          fit: BoxFit.cover,
-          borderRadius: BorderRadius.circular(4),
+          child: ImageAtom(
+            url: character.thumbnail.toValidImg(),
+            height: 50,
+            width: 50,
+            fit: BoxFit.cover,
+            borderRadius: BorderRadius.circular(4),
+          ),
         ),
       ),
       title: Text(
@@ -59,19 +66,8 @@ class CharacterTiledMolecule extends StatelessWidget {
           ),
         ],
       ),
-      trailing: InkWell(
-        borderRadius: BorderRadius.circular(100),
-        onTap: () {},
-        child: Container(
-          // padding: const EdgeInsets.all(4),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
-            border: Border.all(color: ColorsConstants.alt, width: 0.5),
-          ),
-          height: 25,
-          width: 25,
-          child: const Icon(Icons.keyboard_arrow_right_outlined, size: 18),
-        ),
+      trailing: ArrowRightIconAtom(
+        onTap: () => onPressed(character),
       ),
     );
   }
