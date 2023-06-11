@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:marvel/app/injector.dart';
-
 import 'package:marvel/core/constant/colors.constants.dart';
 import 'package:marvel/core/constant/routes.constants.dart';
 import 'package:marvel/core/extension/localization.extension.dart';
@@ -32,7 +30,6 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: injector.get<ColorsConstants>().primary,
       body: SafeArea(
         child: Stack(
           children: [
@@ -42,7 +39,7 @@ class _SplashViewState extends State<SplashView> {
                 height: 25,
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: ColorsConstants.black,
+                  color: ColorsConstants.alt,
                 ),
               ),
             ),
@@ -54,7 +51,7 @@ class _SplashViewState extends State<SplashView> {
                 child: Text(
                   context.l10n.splashScreenForDemostration,
                   style: const TextStyle(
-                    color: ColorsConstants.white,
+                    color: ColorsConstants.alt,
                   ),
                 ),
               ),

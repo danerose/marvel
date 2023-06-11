@@ -1,6 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:marvel/app/model/character/thumbnail_model.dart';
 import 'package:marvel/core/utils/validators.util.dart';
+
+import 'package:marvel/app/model/character/comic_model.dart';
+import 'package:marvel/app/model/character/event_model.dart';
+import 'package:marvel/app/model/character/storie_model.dart';
+import 'package:marvel/app/model/character/thumbnail_model.dart';
 
 class Character extends Equatable {
   final int id;
@@ -9,6 +13,9 @@ class Character extends Equatable {
   final String modified;
   final String resourceURI;
   final Thumbnail thumbnail;
+  final Comic comic;
+  final Storie storie;
+  final Event event;
 
   const Character({
     required this.id,
@@ -17,6 +24,9 @@ class Character extends Equatable {
     required this.modified,
     required this.resourceURI,
     required this.thumbnail,
+    required this.comic,
+    required this.storie,
+    required this.event,
   });
 
   factory Character.fromJson(Map<String, dynamic>? json) {
@@ -29,6 +39,10 @@ class Character extends Equatable {
       thumbnail: Thumbnail.fromJson(
         ValidatorUtils.containsKey(json, 'thumbnail', null),
       ),
+      comic: Comic.fromJson(ValidatorUtils.containsKey(json, 'comics', null)),
+      storie:
+          Storie.fromJson(ValidatorUtils.containsKey(json, 'stories', null)),
+      event: Event.fromJson(ValidatorUtils.containsKey(json, 'events', null)),
     );
   }
 
@@ -39,6 +53,9 @@ class Character extends Equatable {
       'description': description,
       'modified': modified,
       'thumbnail': thumbnail.toJson(),
+      'comics': thumbnail.toJson(),
+      'stories': thumbnail.toJson(),
+      'events': thumbnail.toJson(),
     };
   }
 
@@ -50,5 +67,8 @@ class Character extends Equatable {
         modified,
         resourceURI,
         thumbnail,
+        comic,
+        storie,
+        event,
       ];
 }

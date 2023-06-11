@@ -17,7 +17,7 @@ class ColorsConstants {
   }
 
   static const Color background = Color.fromARGB(255, 31, 24, 31);
-  static const Color textAlt = Color.fromARGB(255, 163, 137, 163);
+  static const Color alt = Color.fromARGB(255, 108, 19, 143);
   static const Color white = Color.fromARGB(255, 255, 255, 255);
   static const Color black = Color.fromARGB(255, 0, 0, 0);
   static const Color disabled = Color.fromARGB(255, 212, 205, 205);
