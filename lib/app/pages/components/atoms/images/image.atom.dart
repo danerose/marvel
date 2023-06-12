@@ -88,7 +88,7 @@ class ImageAtom extends StatelessWidget {
                 child: Center(
                   child: SizedBox(
                     width: width / 3,
-                    height: height / 3,
+                    height: width / 3,
                     child: const CircularProgressIndicator(
                       strokeWidth: 2,
                     ),

@@ -4,27 +4,27 @@ import 'package:marvel/core/utils/validators.util.dart';
 
 class SerieDetail extends Equatable {
   final int id;
-  final String name;
+  final String title;
   final String description;
   final Thumbnail thumbnail;
 
   const SerieDetail({
     required this.id,
-    required this.name,
+    required this.title,
     required this.description,
     required this.thumbnail,
   });
 
   const SerieDetail.empty()
       : id = 0,
-        name = '',
+        title = '',
         description = '',
         thumbnail = const Thumbnail.empty();
 
   factory SerieDetail.fromJson(Map<String, dynamic>? json) {
     return SerieDetail(
       id: ValidatorUtils.containsKey<int>(json, 'id', 0),
-      name: ValidatorUtils.containsKey(json, 'name', ''),
+      title: ValidatorUtils.containsKey(json, 'title', ''),
       description: ValidatorUtils.containsKey(json, 'description', ''),
       thumbnail: Thumbnail.fromJson(
         ValidatorUtils.containsKey(json, 'thumbnail', null),
@@ -35,12 +35,12 @@ class SerieDetail extends Equatable {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
-      'name': name,
+      'title': title,
       'description': description,
       'thumbnail': thumbnail.toJson()
     };
   }
 
   @override
-  List<Object?> get props => [id, name, description, thumbnail];
+  List<Object?> get props => [id, title, description, thumbnail];
 }

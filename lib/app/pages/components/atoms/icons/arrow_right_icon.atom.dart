@@ -27,7 +27,11 @@ class ArrowRightIconAtom extends StatelessWidget {
             ),
             height: size - 5,
             width: size - 5,
-            child: const Icon(Icons.keyboard_arrow_right_outlined, size: 18),
+            child: const Icon(
+              Icons.keyboard_arrow_right_outlined,
+              size: 18,
+              color: ColorsConstants.alt,
+            ),
           ),
         ),
       ),
