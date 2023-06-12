@@ -41,10 +41,12 @@ void main() {
         mockHttpService.get(any,
             queryParameters: anyNamed('queryParameters'),
             options: anyNamed('options')),
-      ).thenAnswer((_) async => Response(
-            data: response,
-            requestOptions: RequestOptions(),
-          ));
+      ).thenAnswer(
+        (_) async => Response(
+          data: response,
+          requestOptions: RequestOptions(),
+        ),
+      );
       final result = await marvelRepositoryImpl.getCharacters();
 
       expect(result, isA<Right<CustomException, CharacterResponse>>());
@@ -61,13 +63,14 @@ void main() {
 
     test('should throw an exception when an error occurs', () async {
       const exception = CustomException(
-          status: 500,
-          error: ExceptionEnum.internal,
-          data: null,
-          message: 'Internal Server Error');
-      when(mockHttpService.get(any,
-              queryParameters: anyNamed('queryParameters')))
-          .thenThrow(exception);
+        status: 500,
+        error: ExceptionEnum.internal,
+        data: null,
+        message: 'Internal Server Error',
+      );
+      when(
+        mockHttpService.get(any, queryParameters: anyNamed('queryParameters')),
+      ).thenThrow(exception);
 
       // Act
       final result = await marvelRepositoryImpl.getCharacters();
@@ -90,10 +93,12 @@ void main() {
         mockHttpService.get(any,
             queryParameters: anyNamed('queryParameters'),
             options: anyNamed('options')),
-      ).thenAnswer((_) async => Response(
-            data: response,
-            requestOptions: RequestOptions(),
-          ));
+      ).thenAnswer(
+        (_) async => Response(
+          data: response,
+          requestOptions: RequestOptions(),
+        ),
+      );
       final result = await marvelRepositoryImpl.getComics(id: 0);
 
       expect(result, isA<Right<CustomException, DetailResponse>>());
@@ -110,13 +115,14 @@ void main() {
 
     test('should throw an exception when an error occurs', () async {
       const exception = CustomException(
-          status: 500,
-          error: ExceptionEnum.internal,
-          data: null,
-          message: 'Internal Server Error');
-      when(mockHttpService.get(any,
-              queryParameters: anyNamed('queryParameters')))
-          .thenThrow(exception);
+        status: 500,
+        error: ExceptionEnum.internal,
+        data: null,
+        message: 'Internal Server Error',
+      );
+      when(
+        mockHttpService.get(any, queryParameters: anyNamed('queryParameters')),
+      ).thenThrow(exception);
 
       // Act
       final result = await marvelRepositoryImpl.getComics(id: 0);
@@ -136,13 +142,17 @@ void main() {
       );
 
       when(
-        mockHttpService.get(any,
-            queryParameters: anyNamed('queryParameters'),
-            options: anyNamed('options')),
-      ).thenAnswer((_) async => Response(
-            data: response,
-            requestOptions: RequestOptions(),
-          ));
+        mockHttpService.get(
+          any,
+          queryParameters: anyNamed('queryParameters'),
+          options: anyNamed('options'),
+        ),
+      ).thenAnswer(
+        (_) async => Response(
+          data: response,
+          requestOptions: RequestOptions(),
+        ),
+      );
       final result = await marvelRepositoryImpl.getSeries(id: 0);
 
       expect(result, isA<Right<CustomException, DetailResponse>>());
@@ -159,13 +169,14 @@ void main() {
 
     test('should throw an exception when an error occurs', () async {
       const exception = CustomException(
-          status: 500,
-          error: ExceptionEnum.internal,
-          data: null,
-          message: 'Internal Server Error');
-      when(mockHttpService.get(any,
-              queryParameters: anyNamed('queryParameters')))
-          .thenThrow(exception);
+        status: 500,
+        error: ExceptionEnum.internal,
+        data: null,
+        message: 'Internal Server Error',
+      );
+      when(
+        mockHttpService.get(any, queryParameters: anyNamed('queryParameters')),
+      ).thenThrow(exception);
 
       // Act
       final result = await marvelRepositoryImpl.getComics(id: 0);
@@ -188,10 +199,12 @@ void main() {
         mockHttpService.get(any,
             queryParameters: anyNamed('queryParameters'),
             options: anyNamed('options')),
-      ).thenAnswer((_) async => Response(
-            data: response,
-            requestOptions: RequestOptions(),
-          ));
+      ).thenAnswer(
+        (_) async => Response(
+          data: response,
+          requestOptions: RequestOptions(),
+        ),
+      );
       final result = await marvelRepositoryImpl.getEvents(id: 0);
 
       expect(result, isA<Right<CustomException, DetailResponse>>());
@@ -208,13 +221,14 @@ void main() {
 
     test('should throw an exception when an error occurs', () async {
       const exception = CustomException(
-          status: 500,
-          error: ExceptionEnum.internal,
-          data: null,
-          message: 'Internal Server Error');
-      when(mockHttpService.get(any,
-              queryParameters: anyNamed('queryParameters')))
-          .thenThrow(exception);
+        status: 500,
+        error: ExceptionEnum.internal,
+        data: null,
+        message: 'Internal Server Error',
+      );
+      when(
+        mockHttpService.get(any, queryParameters: anyNamed('queryParameters')),
+      ).thenThrow(exception);
 
       // Act
       final result = await marvelRepositoryImpl.getComics(id: 0);

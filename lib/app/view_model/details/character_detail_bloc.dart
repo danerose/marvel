@@ -55,7 +55,6 @@ class CharDetailBloc extends Bloc<CharDetailEvent, CharDetailState> {
   ) async {
     emit(state.copyWith(loadingEvents: true));
     final res = await _marvelRepository.getEvents(id: event.character.id);
-    await Future.delayed(const Duration(seconds: 2));
     res.fold(
       (CustomException l) async => emit(state.copyWith(loadingEvents: false)),
       (DetailResponse<EventDetail> r) async => emit(state.copyWith(
