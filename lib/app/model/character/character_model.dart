@@ -63,6 +63,7 @@ class Character extends Equatable {
       'name': name,
       'description': description,
       'modified': modified,
+      'resourceURI': resourceURI,
       'thumbnail': thumbnail.toJson(),
       'comics': thumbnail.toJson(),
       'stories': thumbnail.toJson(),
