@@ -21,7 +21,6 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        foregroundColor: ColorsConstants.white,
         backgroundColor: ColorsConstants.transparent,
         title: Text(context.l10n.appTitle),
       ),

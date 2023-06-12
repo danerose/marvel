@@ -15,7 +15,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Marvel',
       initialRoute: RoutesConstants.initial,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: CustomTheme.light(),
       darkTheme: CustomTheme.dark(),
       locale: PlatformDispatcher.instance.locale,
