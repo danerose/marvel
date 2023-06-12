@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
+
 import 'package:marvel/app/model/details/comic_detail_model.dart';
 import 'package:marvel/app/model/details/event_detail_model.dart';
 import 'package:marvel/app/model/details/serie_detail_model.dart';
 import 'package:marvel/app/model/response/detail_response_model.dart';
-import 'package:marvel/core/utils/generate.util.dart';
 
 import 'package:marvel/core/enviroment/env.dart';
 import 'package:marvel/core/exceptions/custom.exceptions.dart';
@@ -24,13 +24,12 @@ class MarvelRepositoryImpl implements MarvelRepository {
   @override
   Future<Either<CustomException, CharacterResponse>> getCharacters() async {
     try {
-      final timeStamp = GenerateUtil.genTimeStamp();
       final res = await httpService.get(
         MarvelApiConstants.characters,
         queryParameters: {
           'apikey': env.apiPubKey,
-          'hash': GenerateUtil.genMarvelHash(env, timeStamp),
-          'ts': timeStamp,
+          'hash': env.hash,
+          'ts': env.timeStamp,
         },
       );
       return Right(CharacterResponse.fromJson(res.data));
@@ -46,13 +45,12 @@ class MarvelRepositoryImpl implements MarvelRepository {
     required int id,
   }) async {
     try {
-      final timeStamp = GenerateUtil.genTimeStamp();
       final res = await httpService.get(
         MarvelApiConstants.characterComicsById(id.toString()),
         queryParameters: {
           'apikey': env.apiPubKey,
-          'hash': GenerateUtil.genMarvelHash(env, timeStamp),
-          'ts': timeStamp,
+          'hash': env.hash,
+          'ts': env.timeStamp,
         },
       );
       return Right(DetailResponse.fromJson(res.data, ComicDetail.fromJson));
@@ -68,13 +66,12 @@ class MarvelRepositoryImpl implements MarvelRepository {
     required int id,
   }) async {
     try {
-      final timeStamp = GenerateUtil.genTimeStamp();
       final res = await httpService.get(
         MarvelApiConstants.characterEventsById(id.toString()),
         queryParameters: {
           'apikey': env.apiPubKey,
-          'hash': GenerateUtil.genMarvelHash(env, timeStamp),
-          'ts': timeStamp,
+          'hash': env.hash,
+          'ts': env.timeStamp,
         },
       );
       return Right(DetailResponse.fromJson(res.data, EventDetail.fromJson));
@@ -90,13 +87,12 @@ class MarvelRepositoryImpl implements MarvelRepository {
     required int id,
   }) async {
     try {
-      final timeStamp = GenerateUtil.genTimeStamp();
       final res = await httpService.get(
         MarvelApiConstants.characterSeriesById(id.toString()),
         queryParameters: {
           'apikey': env.apiPubKey,
-          'hash': GenerateUtil.genMarvelHash(env, timeStamp),
-          'ts': timeStamp,
+          'hash': env.hash,
+          'ts': env.timeStamp,
         },
       );
       return Right(DetailResponse.fromJson(res.data, SerieDetail.fromJson));

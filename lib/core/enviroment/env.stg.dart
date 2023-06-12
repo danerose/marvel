@@ -1,7 +1,14 @@
 import 'package:marvel/core/enviroment/env.dart';
 import 'package:marvel/core/enum/enviroments.enum.dart';
+import 'package:marvel/core/utils/generate.util.dart';
 
 class StagingEnv implements Environment {
+  late String _timeStamp = '';
+
+  StagingEnv() {
+    _timeStamp = GenerateUtil.genTimeStamp();
+  }
+
   @override
   String get apiURL => 'https://gateway.marvel.com/v1/public';
 
@@ -13,4 +20,12 @@ class StagingEnv implements Environment {
 
   @override
   EnviromentEnum get env => EnviromentEnum.staging;
+
+  @override
+  String get hash {
+    return GenerateUtil.genMarvelHash(apiPrivKey, apiPubKey, _timeStamp);
+  }
+
+  @override
+  String get timeStamp => _timeStamp;
 }

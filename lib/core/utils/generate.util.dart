@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 
-import 'package:marvel/core/enviroment/env.dart';
-
 class GenerateUtil {
-  static String genMarvelHash(Environment env, String timeStamp) {
+  static String genMarvelHash(
+    String apiPrivKey,
+    String apiPubKey,
+    String timeStamp,
+  ) {
     final bytes = utf8.encode(
-      DateTime.now().millisecondsSinceEpoch.toString() +
-          env.apiPrivKey +
-          env.apiPubKey,
+      DateTime.now().millisecondsSinceEpoch.toString() + apiPrivKey + apiPubKey,
     );
     return md5.convert(bytes).toString();
   }
