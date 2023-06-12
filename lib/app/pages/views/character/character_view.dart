@@ -64,6 +64,7 @@ class CharacterView extends StatelessWidget {
                   ),
                 ),
               ),
+
               // BlocBuilder<CharDetailBloc, CharDetailState>(
               //   bloc: CharDetailBloc(injector.get<MarvelRepository>())
               //     ..add(CharacterComicsDetailLoad(character: character)),
