@@ -4,7 +4,7 @@ import 'package:marvel/core/utils/validators.util.dart';
 import 'package:marvel/app/model/character/comic_model.dart';
 import 'package:marvel/app/model/character/event_model.dart';
 import 'package:marvel/app/model/character/storie_model.dart';
-import 'package:marvel/app/model/character/thumbnail_model.dart';
+import 'package:marvel/app/model/others/thumbnail_model.dart';
 
 class Character extends Equatable {
   final int id;

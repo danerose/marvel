@@ -8,7 +8,7 @@ class GenerateUtil {
     String timeStamp,
   ) {
     final bytes = utf8.encode(
-      DateTime.now().millisecondsSinceEpoch.toString() + apiPrivKey + apiPubKey,
+      timeStamp + apiPrivKey + apiPubKey,
     );
     return md5.convert(bytes).toString();
   }
