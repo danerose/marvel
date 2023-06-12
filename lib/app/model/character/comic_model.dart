@@ -25,7 +25,7 @@ class Comic extends Equatable {
     return Comic(
       available: ValidatorUtils.containsKey<int>(json, 'available', 0),
       collectionURI: ValidatorUtils.containsKey(json, 'collectionURI', ''),
-      items: List.from(ValidatorUtils.containsKey(json, 'items', []).map(
+      items: List<Item>.from(ValidatorUtils.containsKey(json, 'items', []).map(
         (e) => Item.fromJson(e),
       )),
       returned: ValidatorUtils.containsKey<int>(json, 'returned', 0),

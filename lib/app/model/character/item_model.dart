@@ -17,7 +17,7 @@ class Item extends Equatable {
         name = '',
         type = '';
 
-  factory Item.fromJson(Map<String, dynamic> json) {
+  factory Item.fromJson(Map<String, dynamic>? json) {
     return Item(
       resourceURI: ValidatorUtils.containsKey(json, 'resourceURI', ''),
       name: ValidatorUtils.containsKey(json, 'name', ''),
