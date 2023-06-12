@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:marvel/core/constant/colors.constants.dart';
+import 'package:marvel/core/constant/routes.constants.dart';
+
 import 'package:marvel/app/model/character/character_model.dart';
 import 'package:marvel/app/pages/components/molecules/tile/character_tile.molecule.dart';
-import 'package:marvel/core/constant/routes.constants.dart';
 
 class CharacterListOrganism extends StatelessWidget {
   const CharacterListOrganism({

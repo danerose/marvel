@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 
 import 'app/app.dart';
 import 'package:marvel/app/injector.dart';
-
 import 'package:marvel/core/enviroment/env.dev.dart';
 
 void main() async {

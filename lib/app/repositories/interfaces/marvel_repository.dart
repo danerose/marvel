@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:marvel/core/exceptions/custom.exceptions.dart';
+
 import 'package:marvel/app/model/details/comic_detail_model.dart';
 import 'package:marvel/app/model/details/event_detail_model.dart';
 import 'package:marvel/app/model/details/serie_detail_model.dart';
-import 'package:marvel/app/model/response/character_response_model.dart';
+
 import 'package:marvel/app/model/response/detail_response_model.dart';
-import 'package:marvel/core/exceptions/custom.exceptions.dart';
+import 'package:marvel/app/model/response/character_response_model.dart';
 
 abstract class MarvelRepository {
   Future<Either<CustomException, CharacterResponse>> getCharacters();

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marvel/app/injector.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marvel/app/pages/components/organism/list/character_loading_list.organism.dart';
 import 'package:marvel/core/constant/colors.constants.dart';
 import 'package:marvel/core/extension/localization.extension.dart';
 
@@ -12,6 +11,7 @@ import 'package:marvel/app/view_model/characters/character_event.dart';
 import 'package:marvel/app/repositories/interfaces/marvel_repository.dart';
 
 import 'package:marvel/app/pages/components/organism/list/character_list.organism.dart';
+import 'package:marvel/app/pages/components/organism/list/character_loading_list.organism.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
