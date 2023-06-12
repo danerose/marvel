@@ -1,4 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:marvel/app/model/details/comic_detail_model.dart';
+import 'package:marvel/app/model/details/event_detail_model.dart';
+import 'package:marvel/app/model/details/serie_detail_model.dart';
+import 'package:marvel/app/model/response/detail_response_model.dart';
 import 'package:marvel/core/utils/generate.util.dart';
 
 import 'package:marvel/core/enviroment/env.dart';
@@ -30,6 +34,72 @@ class MarvelRepositoryImpl implements MarvelRepository {
         },
       );
       return Right(CharacterResponse.fromJson(res.data));
+    } on CustomException catch (e) {
+      return Left(e);
+    } catch (e, s) {
+      return Left(CustomException.unknown(e: e, stack: s));
+    }
+  }
+
+  @override
+  Future<Either<CustomException, DetailResponse<ComicDetail>>> getComics({
+    required int id,
+  }) async {
+    try {
+      final timeStamp = GenerateUtil.genTimeStamp();
+      final res = await httpService.get(
+        MarvelApiConstants.characterComicsById(id.toString()),
+        queryParameters: {
+          'apikey': env.apiPubKey,
+          'hash': GenerateUtil.genMarvelHash(env, timeStamp),
+          'ts': timeStamp,
+        },
+      );
+      return Right(DetailResponse.fromJson(res.data, ComicDetail.fromJson));
+    } on CustomException catch (e) {
+      return Left(e);
+    } catch (e, s) {
+      return Left(CustomException.unknown(e: e, stack: s));
+    }
+  }
+
+  @override
+  Future<Either<CustomException, DetailResponse<EventDetail>>> getEvents({
+    required int id,
+  }) async {
+    try {
+      final timeStamp = GenerateUtil.genTimeStamp();
+      final res = await httpService.get(
+        MarvelApiConstants.characterEventsById(id.toString()),
+        queryParameters: {
+          'apikey': env.apiPubKey,
+          'hash': GenerateUtil.genMarvelHash(env, timeStamp),
+          'ts': timeStamp,
+        },
+      );
+      return Right(DetailResponse.fromJson(res.data, EventDetail.fromJson));
+    } on CustomException catch (e) {
+      return Left(e);
+    } catch (e, s) {
+      return Left(CustomException.unknown(e: e, stack: s));
+    }
+  }
+
+  @override
+  Future<Either<CustomException, DetailResponse<SerieDetail>>> getSeries({
+    required int id,
+  }) async {
+    try {
+      final timeStamp = GenerateUtil.genTimeStamp();
+      final res = await httpService.get(
+        MarvelApiConstants.characterSeriesById(id.toString()),
+        queryParameters: {
+          'apikey': env.apiPubKey,
+          'hash': GenerateUtil.genMarvelHash(env, timeStamp),
+          'ts': timeStamp,
+        },
+      );
+      return Right(DetailResponse.fromJson(res.data, SerieDetail.fromJson));
     } on CustomException catch (e) {
       return Left(e);
     } catch (e, s) {
