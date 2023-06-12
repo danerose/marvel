@@ -2,27 +2,27 @@ import 'package:equatable/equatable.dart';
 import 'package:marvel/app/model/others/thumbnail_model.dart';
 import 'package:marvel/core/utils/validators.util.dart';
 
-class ComicDetail extends Equatable {
+class SerieDetail extends Equatable {
   final int id;
   final String name;
   final String description;
   final Thumbnail thumbnail;
 
-  const ComicDetail({
+  const SerieDetail({
     required this.id,
     required this.name,
     required this.description,
     required this.thumbnail,
   });
 
-  const ComicDetail.empty()
+  const SerieDetail.empty()
       : id = 0,
         name = '',
         description = '',
         thumbnail = const Thumbnail.empty();
 
-  factory ComicDetail.fromJson(Map<String, dynamic>? json) {
-    return ComicDetail(
+  factory SerieDetail.fromJson(Map<String, dynamic>? json) {
+    return SerieDetail(
       id: ValidatorUtils.containsKey<int>(json, 'id', 0),
       name: ValidatorUtils.containsKey(json, 'name', ''),
       description: ValidatorUtils.containsKey(json, 'description', ''),
