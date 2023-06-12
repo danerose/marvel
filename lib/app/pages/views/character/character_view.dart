@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marvel/app/injector.dart';
 import 'package:marvel/app/model/character/character_model.dart';
 import 'package:marvel/app/pages/components/atoms/icons/arrow_left_icon.atom.dart';
 import 'package:marvel/app/pages/components/atoms/images/image.atom.dart';
+import 'package:marvel/app/repositories/interfaces/marvel_repository.dart';
+import 'package:marvel/app/view_model/details/character_detail_bloc.dart';
+import 'package:marvel/app/view_model/details/character_detail_event.dart';
+import 'package:marvel/app/view_model/details/character_detail_state.dart';
 import 'package:marvel/core/config/size/size.config.dart';
 import 'package:marvel/core/constant/colors.constants.dart';
 
@@ -58,7 +63,31 @@ class CharacterView extends StatelessWidget {
                     borderRadius: BorderRadius.zero,
                   ),
                 ),
-              )
+              ),
+              // BlocBuilder<CharDetailBloc, CharDetailState>(
+              //   bloc: CharDetailBloc(injector.get<MarvelRepository>())
+              //     ..add(CharacterComicsDetailLoad(character: character)),
+              //   buildWhen: (p, c) => p.loadingComics != c.loadingComics,
+              //   builder: (BuildContext _, CharDetailState state) {
+              //     return Text(state.loadingComics.toString());
+              //   },
+              // ),
+              // BlocBuilder<CharDetailBloc, CharDetailState>(
+              //   bloc: CharDetailBloc(injector.get<MarvelRepository>())
+              //     ..add(CharacterSeriesDetailLoad(character: character)),
+              //   buildWhen: (p, c) => p.loadingSeries != c.loadingSeries,
+              //   builder: (BuildContext _, CharDetailState state) {
+              //     return Text(state.loadingSeries.toString());
+              //   },
+              // ),
+              // BlocBuilder<CharDetailBloc, CharDetailState>(
+              //   bloc: CharDetailBloc(injector.get<MarvelRepository>())
+              //     ..add(CharacterEventsDetailLoad(character: character)),
+              //   buildWhen: (p, c) => p.loadingEvents != c.loadingEvents,
+              //   builder: (BuildContext _, CharDetailState state) {
+              //     return Text(state.loadingEvents.toString());
+              //   },
+              // ),
             ],
           )
         ],

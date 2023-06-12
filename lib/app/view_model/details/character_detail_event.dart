@@ -12,3 +12,18 @@ class CharacteDetailLoad extends CharDetailEvent {
   CharacteDetailLoad({required this.character});
   final Character character;
 }
+
+class CharacterComicsDetailLoad extends CharDetailEvent {
+  CharacterComicsDetailLoad({required this.character});
+  final Character character;
+}
+
+class CharacterSeriesDetailLoad extends CharDetailEvent {
+  CharacterSeriesDetailLoad({required this.character});
+  final Character character;
+}
+
+class CharacterEventsDetailLoad extends CharDetailEvent {
+  CharacterEventsDetailLoad({required this.character});
+  final Character character;
+}
